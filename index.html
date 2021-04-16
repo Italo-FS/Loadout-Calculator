@@ -1,0 +1,449 @@
+<html>
+	<head>		
+		<title>Loudout Calculator</title>
+		<script>		
+			//alert("I am an alert box!");
+			//function that display value
+			var inventory = []
+			var equiped = []		
+
+			//0-name, 1-icon, 2-weight, 3-slot, 4-stackable
+			var bd = [
+				["135 Neville Anti-Tank Rifle","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/1/1f/Anti-Tank_Rifle.png",38,1,false],
+				["Aalto Storm Rifle 24","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/2/21/StormRifle.png",27,1,false],
+				["Catara mo.II","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/f/f2/LightMachineGunIcon.png",32,1,false],
+				["Daucus isg.III","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/5/5d/Daucus_isg_Icon.png",54,8,false],
+				["Malone MK.2","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/5/52/Malone_MG_Icon.png",36,1,false],
+				["KRN886-127 Gast Machine Gun","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/8/8e/Gast_MG_Icon.png",36,1,false],
+				["Ferro 879","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/b/bb/Pistol-0.png",9,2,false],
+				["Cascadier 873","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/4/4c/Burst_Pistol_Icon.png",7,2,false],
+				["Cometa T2-9","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/6/6d/Revolver.png",13,2,false],
+				["No.2 Loughcaster","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/9/9f/Rifle.png",18,1,false],
+				["Argenti r.II Rifle","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/f/f2/Argenti_Rifle_Icon.png",12,1,false],
+				["Blakerow 871","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/b/b6/Carabine.png",12,1,false],
+				["Fuscina pi.I","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/7/73/Fuscina_Rifle_Icon.png",18,1,false],
+				["Fiddler Submachine Gun Model 868","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/e/e5/Smg-1.png",14,1,false],
+				["“The Pitch Gun” mc.V","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/d/d5/Pitch_Gun_Icon.png",14,2,false],
+				["Brasa Shotgun","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/6/61/Shotgun.png",15,1,false],
+				["Clancy-Raca M4","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/3/30/SniperRifleItemIcon.png",37,1,false],
+				["KRR3-792 Auger","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/f/f2/Auger_Sniper_Icon.png",22,1,false],
+				["Anti-Tank Mine","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/3/37/Land_Mine.png",7,3,false],
+				["Anti-Tank Sticky Bomb","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/7/74/Sticky_Bomb.png",18,3,false],
+				["Gas Grenade","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/d/d6/Green_Ash.png",3,3,false],
+				["Grenade","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/f/fb/Grenade.png",3,3,false],
+				["Grenade","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/2/2e/Bomastone_Grenade_Icon.png",3,3,false],
+				["High Explosive Grenade","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/6/6b/HE_Grenade.png",14,3,false],
+				["Satchel Charge","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/6/6f/Satchel_Chrg.png",36,3,false],
+				["Smoke Grenade","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/5/51/Smk_Grenade.png",4,3,false],
+				["Bonesaw MK.3","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/7/70/Bonesaw_Icon.png",54,1,false],
+				["Mounted Bonesaw MK.3","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/e/e4/Mounted_Bonesaw_Icon.png",54,8,false],
+				["Ignifist 30","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/1/11/Ignifist_Icon.png",21.8,1,false],
+				["Venom c.II 35","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/c/cd/Venom_c.II_Icon.png",54,1,false],
+				["Bane 45","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/d/d3/Bane_45_Icon.png",54,1,false],
+				["Cremari Mortar","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/f/f5/Mortar-0.png",55,1,false],
+				["Cutler Launcher 4","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/a/a5/Cutler_Launcher_Icon.png",45,1,false],
+				["Bayonet","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/c/cd/Bayonet.png",2,7,false],
+				[".44","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/2/26/.44.png",1.8,0,true],
+				["8mm","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/7/74/9mm.png",1.8,0,true],
+				["9mm SMG","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/1/18/9mm_SMG.png",1.8,0,true],
+				["7.62mm","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/2/2d/762mm.png",1.8,0,true],
+				["7.92mm","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/0/0c/7.92mmv1.png",1.8,0,true],
+				["8.5mm","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/2/2b/SniperRifleAmmoItemIcon.png",2,0,true],
+				["Buckshot","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/c/c2/Buckshot.png",1.8,0,true],
+				["12.7mm","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/6/6c/127mm.png",1.8,0,false],
+				["13.5mm","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/7/73/ATRifleAmmoItemIcon.png",2,0,true],
+				["30mm","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/c/c8/30mm.png",9.2,0,false],
+				["120mm","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/6/6b/Howitzer_Shell.png",45,0,false],
+				["150mm","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/e/e6/150mm.png",54,8,false],
+				["250mm","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/7/77/250mm.png",54,0,false],
+				["300mm Round","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/8/8f/LRArtilleryAmmoItemIcon.png",72,0,false],
+				["30mm","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/c/c8/30mm.png",9.2,0,false],
+				["40mm","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/7/70/LightTank_Ammo.png",18.2,0,false],
+				["68mm AT","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/d/d2/68mm.png",18.2,0,false],
+				["A.T.R.P.G. Indirect Shell","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/6/6b/ATRPG_Indirect_shell.png",8.1,0,false],
+				["A.T.R.P.G. Shell","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/2/2f/ATRPG_Shell.png",8.1,0,false],
+				["Mortar Shell","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/9/9f/Mortar_Shell.png",7.25,0,false],
+				["R.P.G. Shell","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/a/a2/RPG_shell_.png",3.75,0,false],
+				["Hammer","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/8/81/Hammer.png",4,1,false],
+				["Sledge Hammer","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/5/59/Sledge_Hammer.png",18,1,false],
+				["Wrench","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/7/7c/Wrench.png",5,1,false],
+				["Binoculars","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/7/74/Binoculars.png",2,2,false],
+				["Shovel","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/2/22/ShovelIcon.png",19,1,false],
+				["Radio","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/3/31/Radio.png",0.2,4,false],
+				["Radio Backpack","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/0/01/Radio_backpacks.png",27,6,false],
+				["Gas Mask","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/2/2e/Gas_Mask.png",4,5,false],
+				["Bandages","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/b/be/Bandages.png",0.2,3,true],
+				["First Aid Kit","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/9/9f/First_Aid_kit.png",9,3,false],
+				["Trauma Kit","https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/d/d5/Trauma_Kit.png",18,1,false],
+			];
+			
+			function calcular()
+			{
+				var peso = 0;
+				for (var i = 0; i < inventory.length; i++) {
+					if (inventory[i] != null) {
+						peso += (bd[inventory[i][0]][2] * inventory[i][1]);
+					}
+				}
+				for (var i = 0; i < equiped.length; i++) {
+					if (equiped[i] != null) {
+						peso += (bd[equiped[i][0]][2] * equiped[i][1]);
+					}
+				}
+				document.getElementById("Peso").value = peso + '%';
+			}
+
+			function add(event, val, qtde = 1, split = false)
+			{
+				if (bd[val][3] == 8) {
+					document.getElementById("E8").src = bd[val][1];
+					equiped[8][0] = val;
+					equiped[8][1] = 1;
+					atualizarSlot("E", 8)					
+				}
+				if (bd[val][4] && !split) {
+					for (var i = 0; i < 9; i++) {
+						if (inventory[i] != null) {							
+							if (inventory[i][0] == val && inventory[i][1]<99) {								
+								inventory[i][1] += qtde;
+								atualizarSlot("M", i);
+								calcular();
+								return true;
+							}
+						}
+					}
+				}
+				for (var j = 0; j < 9; j++) {
+					if (inventory[j] == null) {
+						inventory[j] = [];
+						inventory[j][0] = val;
+						inventory[j][1] = qtde;
+						document.getElementById("M"+j).src = bd[val][1];
+						atualizarSlot("M", j);
+						calcular();
+						return true;
+					}
+				}
+				return false
+			}
+
+			function interarirInventario(event, letter, id) 
+			{
+				if (event.altKey) {					
+					dropItem(letter, id);
+				}
+				else if (event.ctrlKey) {
+					dividir(letter, id);
+				}
+				else {
+					if (letter == "M") {
+						equipar(letter, id)
+					}
+					else if (letter == "E") {
+						desequipar(letter, id)
+					}
+				}
+				calcular();
+			}
+			
+			function dividir(letter, id) 
+			{
+				if (letter == "M") {
+					var up = Math.ceil(inventory[id][1]/2);
+					var down = inventory[id][1] - up;
+					if (add(0, inventory[id][0], down, true) == true) {
+						inventory[id][1] = up;
+						atualizarSlot(letter, id);
+					}
+				}
+			}
+
+			function dropItem(letter, id) 
+			{
+				document.getElementById(letter+id).src = "https://imgur.com/TmwmszG.png";
+				if (letter == 'M') {
+					inventory[id] = null;					
+				}
+				else if (letter == 'E') {
+					equiped[id] = null;
+				}
+				atualizarSlot(letter, id);
+			}
+
+			function equipar(letter, id)
+			{
+				if (inventory[id] == null) {
+					return;
+				}
+				slot = bd[inventory[id][0]][3];
+				if (slot > 0) {					
+					if (equiped[slot] == null) {
+						equiped[slot] = [];
+					}
+
+					if (equiped[slot][0] == inventory[id][0] && bd[inventory[id][0]][4]) {
+						equiped[slot][1] = equiped[slot][1] + inventory[id][1];
+						dropItem(letter, id);
+					}
+					else {
+						var backup = [];
+						backup[0] = equiped[slot][0];
+						backup[1] = equiped[slot][1];
+
+						document.getElementById("E"+slot).src = bd[inventory[id][0]][1];
+						equiped[slot][0] = inventory[id][0];
+						equiped[slot][1] = inventory[id][1];						
+
+						if (backup[0] != null) {	
+							document.getElementById("M"+id).src = bd[backup[0]][1];
+							inventory[id][0] = backup[0];
+							inventory[id][1] = backup[1];
+						}
+						else {
+							dropItem(letter, id);
+						}
+					}
+					atualizarSlot("E", slot);
+				}
+			}
+
+			function atualizarSlot(letter, id)
+			{
+				var valor;
+				if (letter == "M") {
+					if (inventory[id] == null) {
+						valor = '';
+					}
+					else {
+						valor = inventory[id][1];
+					}
+				}
+				else if (letter == "E") {
+					if (equiped[id] == null) {
+						valor = '';
+					}
+					else {
+						valor = equiped[id][1];
+					}					
+				}
+				if (valor < 2) {
+					valor = '';
+				}
+
+				var myElement = document.getElementById("N"+letter+id)
+				if (myElement) {
+					myElement.innerHTML = valor;
+				}
+			}
+
+			function desequipar(letter, id)
+			{
+				if (add(0, equiped[id][0], equiped[id][1]) == true) {
+					dropItem(letter, id)
+				}
+			}
+
+			function start() {
+				generate_stockpile();
+				updateStockpile();
+			}
+
+			function updateStockpile()
+			{
+				bdLen = bd.length;
+				for (var i = 0; i < bdLen; i++) {
+					document.getElementById("S"+i).src = bd[i][1]
+				}
+
+			//generate_stockpile()
+			}
+
+			function generate_stockpile()
+			{
+				var tbl = document.getElementById("stockpile");
+				var tblBody = document.createElement("tbody");
+
+				var aux = 0;
+				var maxAux = bd.length;
+
+				// creating all cells
+				for (var i = 0; i < bd.length/10; i++) {
+				// creates a table row
+					var row = document.createElement("tr");
+
+					for (var j = 0; j<10 && aux<maxAux; j++) {               
+						// Create a <td> element and a text node, make the text
+						// node the contents of the <td>, and put the <td> at
+						// the end of the table row
+						var id = (i*10)+j;
+
+						var cell = document.createElement("td");
+
+						var ctn = document.createElement("div");
+						ctn.setAttribute("class", "container");
+						ctn.setAttribute("onclick", "add(event, "+id+")");
+
+						var png = document.createElement("img");
+						png.setAttribute("class", "inventario");
+						png.setAttribute("id", "S"+id);
+
+						ctn.appendChild(png);
+						cell.appendChild(ctn);
+						row.appendChild(cell);
+
+						aux++;
+					}
+
+					// add the row to the end of the table body
+					tblBody.appendChild(row);
+				}
+
+				// put the <tbody> in the <table>
+				tbl.appendChild(tblBody);
+			}
+			
+			function processData(allText) {
+				var record_num = 5;  // or however many elements there are in each row
+				var allTextLines = allText.split(/\r\n|\n/);
+				var entries = allTextLines[0].split(',');
+				var lines = [];
+
+				var headings = entries.splice(0,record_num);
+				while (entries.length>0) {
+					var tarr = [];
+					for (var j=0; j<record_num; j++) {
+						tarr.push(headings[j]+":"+entries.shift());
+					}
+					lines.push(tarr);
+				}
+				// alert(lines);
+			}
+		</script>
+		<!-- for styling -->
+		<style>
+			.title {
+				margin-bottom: 10px;
+				text-align:center;
+				width: 210px;
+				color:green;
+				border: solid black 2px;
+			}
+			input[type="button"] {
+				background-color:green;
+				color: black;
+				border: solid black 2px;
+				width:100%;
+			}
+			input[type="text"] {
+				background-color:white;
+				border: solid black 2px;
+				width:100%;
+			}
+			.inventario {
+				width: 70px;
+				height: 70px;
+				background-color: #292929;
+				border: solid black 1px;
+				position: relative;
+			}
+			tr.subtitulo {
+				background-color: #757575;
+				border: solid black 1px;
+				color: white;
+				font-family: Monaco;
+				font-size: 150%;
+			}
+			div.container { 
+				position: relative;            
+			}
+			img.icon {
+				width:24px;
+				height:24px;
+				vertical-align:center bottom;
+			}
+			h2.numero { 
+				position: absolute;
+				color: white;
+				bottom: -10px;
+				right: 5px;
+				font-family: Lucida Console;
+				font-size: 100%;
+			}
+			div {
+
+			}
+			.mainbody {
+				display: inline-block;
+				vertical-align: top;
+				background-color:black;
+			}
+			tbody {
+				//background-repeat:no-repeat;
+				background-position:center bottom;				
+			}
+			table {
+				border-spacing: 0px;
+			}
+		</style>
+	</head>
+	<body onload="start()">
+		<div class = title >Loudout Calculator</div>
+		<div class="mainbody">
+			<table>
+				<tbody background="https://imgur.com/gcSCe8e.png">
+					<tr class="subtitulo">
+						<td colspan="3" style="padding-left: 5px;">Equipamentos</td>					
+						<td width="72" style="text-align: right;"><img class="icon" src="https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/0/0f/White_backpack.png";/></td>
+						<td width="72" style="text-align: left;"><input type="text" id="Peso" size="10" style="background-color: black;color: white;width:60;"></td>
+					</tr>
+					<tr>
+						<td><div class="container" onclick="interarirInventario(event, 'E', '1')"><img class="inventario" id="E1" src="https://imgur.com/TmwmszG.png"/></td>
+						<td><div class="container" onclick="interarirInventario(event, 'E', '8')"><img class="inventario" id="E8" src="https://imgur.com/TmwmszG.png"/> </td>
+						<td width="72"></td>
+						<td width="72"></td>
+						<td><div class="container" onclick="interarirInventario(event, 'E', '5')"><img class="inventario" id="E5" src="https://imgur.com/TmwmszG.png"/></td>
+					</tr>						
+					<tr>
+						<td><div class="container" onclick="interarirInventario(event, 'E', '2')"><img class="inventario" id="E2" src="https://imgur.com/TmwmszG.png"/></td>
+						<td width="72"></td>
+						<td width="72"></td>
+						<td width="72"></td>
+						<td><div class="container" onclick="interarirInventario(event, 'E', '6')"><img class="inventario" id="E6" src="https://imgur.com/TmwmszG.png"/></td>
+					</tr>
+					<tr>
+						<td><div class="container" onclick="interarirInventario(event, 'E', '3')"><img class="inventario" id="E3" src="https://imgur.com/TmwmszG.png"/><h2 class="numero" id="NE3"></h2></div></td>
+						<td width="72"></td>
+						<td width="72"></td>
+						<td><div class="container" onclick="interarirInventario(event, 'E', '4')"><img class="inventario" id="E4" src="https://imgur.com/TmwmszG.png"/></td>
+						<td><div class="container" onclick="interarirInventario(event, 'E', '7')"><img class="inventario" id="E7" src="https://imgur.com/TmwmszG.png"/></td>
+					</tr>
+				</tbody>	
+				<tbody>	
+					<tr class="subtitulo">
+						<td colspan="5" style="padding-left: 5px;">Mochila</td>
+					</tr>
+					<tr>
+						<td><div class="container" onclick="interarirInventario(event, 'M', '0')"><img class="inventario" id="M0" src="https://imgur.com/TmwmszG.png"/><h2 class="numero" id="NM0"></h2></td>
+						<td><div class="container" onclick="interarirInventario(event, 'M', '1')"><img class="inventario" id="M1" src="https://imgur.com/TmwmszG.png"/><h2 class="numero" id="NM1"></h2></td>
+						<td><div class="container" onclick="interarirInventario(event, 'M', '2')"><img class="inventario" id="M2" src="https://imgur.com/TmwmszG.png"/><h2 class="numero" id="NM2"></h2></td>
+						<td><div class="container" onclick="interarirInventario(event, 'M', '3')"><img class="inventario" id="M3" src="https://imgur.com/TmwmszG.png"/><h2 class="numero" id="NM3"></h2></td>
+						<td><div class="container" onclick="interarirInventario(event, 'M', '4')"><img class="inventario" id="M4" src="https://imgur.com/TmwmszG.png"/><h2 class="numero" id="NM4"></h2></td>
+					</tr>
+					<tr>
+						<td><div class="container" onclick="interarirInventario(event, 'M', '5')"><img class="inventario" id="M5" src="https://imgur.com/TmwmszG.png"/><h2 class="numero" id="NM5"></h2></td>
+						<td><div class="container" onclick="interarirInventario(event, 'M', '6')"><img class="inventario" id="M6" src="https://imgur.com/TmwmszG.png"/><h2 class="numero" id="NM6"></h2></td>
+						<td><div class="container" onclick="interarirInventario(event, 'M', '7')"><img class="inventario" id="M7" src="https://imgur.com/TmwmszG.png"/><h2 class="numero" id="NM7"></h2></td>
+						<td><div class="container" onclick="interarirInventario(event, 'M', '8')"><img class="inventario" id="M8" src="https://imgur.com/TmwmszG.png"/><h2 class="numero" id="NM8"></h2></td>
+					</tr>
+				</tbody>	
+			</table>
+		</div>
+		<div class="mainbody">
+			<table border="0" id="stockpile">
+				<tr class="subtitulo">
+					<td colspan="10" style="padding-left: 5px;">Stockpile</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>
