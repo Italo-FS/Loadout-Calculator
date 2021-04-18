@@ -1,0 +1,96 @@
+.title {
+	margin-bottom: 10px;
+	text-align:center;
+	width: 210px;
+	color:green;
+	border: solid black 2px;
+}
+
+input[type="button"] {
+	background-color:green;
+	color: black;
+	border: solid black 2px;
+	width:100%;
+}
+
+input[type="text"] {
+	background-color:white;
+	border: solid black 2px;
+	width:100%;
+}
+
+.imagem {
+	width: 70px;
+	height: 70px;
+	background-color: #292929;
+	border: solid black 1px;
+	position: relative;
+}
+
+tr.subtitulo {
+	background-color: #757575;
+	border: solid black 1px;
+	color: white;
+	font-family: Monaco;
+	font-size: 150%;
+}
+
+.container { 
+	position: relative;
+}
+
+img.icon {
+	width:24px;
+	height:24px;
+	vertical-align:center bottom;
+}
+
+h2.numero { 
+	position: absolute;
+	color: white;
+	bottom: -10px;
+	right: 5px;
+	font-family: Lucida Console;
+	font-size: 100%;
+}
+
+.mainbody {
+	display: inline-block;
+	vertical-align: top;
+	background-color:black;
+	margin: 5px;
+}
+
+tbody {
+	//background-repeat:no-repeat;
+	background-position:center bottom;				
+}
+
+table {
+	border-spacing: 0px;
+}
+
+.container .tooltiptext {
+  visibility: hidden;
+  min-width: 200px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  font-family: Helvetica;
+  border-radius: 6px;
+  padding: 5px 0;
+  height: max-content;
+  text-align: left;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.container .imagem:hover + .tooltiptext {
+  visibility: visible;
+}
+
+.container .tooltiptext p {
+	margin: 2px;
+}
