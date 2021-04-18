@@ -261,7 +261,7 @@ var bd = [
 	"Class": "Grenade",
 	"Type": "Shrapnel",
 	"Faction": "Colonial",
-	"Description": "The Bomastone is a 'stick' style fragmentation grenade with a handle designed to aid in lobbing over moderate distances.",
+	"Description": "The Bomastone is a ‘stick’ style fragmentation grenade with a handle designed to aid in lobbing over moderate distances.",
 	},
 	{
 	"Name": "Mammon 91-b",

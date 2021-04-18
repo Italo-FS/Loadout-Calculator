@@ -57,8 +57,30 @@ h2.numero {
 .mainbody {
 	display: inline-block;
 	vertical-align: top;
-	background-color:black;
 	margin: 5px;
+}
+
+.playerInventory {
+	background-color:black;
+}
+
+.tutorial {
+	margin: 5px;
+}
+
+.tutorial p {
+	margin: 2px;
+}
+
+.tutorial h3 {
+	margin: 4px;
+}
+
+.stockpile {
+	display: inline-block;
+	vertical-align: top;
+	margin: 5px;
+	background-color:black;
 }
 
 tbody {

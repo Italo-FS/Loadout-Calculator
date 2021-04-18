@@ -6,58 +6,66 @@
 		<link rel="stylesheet" href="styles.css">
 	</head>
 	<body onload="start()">
-		<div class = title >Loudout Calculator</div>
+		<div class = title>Loudout Calculator</div>
 		<div class="mainbody">
-			<table>
-				<tbody background="https://imgur.com/gcSCe8e.png">
-					<tr class="subtitulo">
-						<td colspan="3" style="padding-left: 5px;">Equipamentos</td>					
-						<td width="72" style="text-align: right;"><img class="icon" src="https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/0/0f/White_backpack.png";/></td>
-						<td width="72" style="text-align: left;"><input type="text" id="Peso" size="10" style="background-color: black;color: white;width:60;"></td>
-					</tr>
-					<tr>
-						<td><div class="container" id="C1" onclick="interarirInventario(event, '1')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
-						<td><div class="container" id="C8" onclick="interarirInventario(event, '8')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/> </td>
-						<td width="72"></td>
-						<td width="72"></td>
-						<td><div class="container" id="C5" onclick="interarirInventario(event, '5')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
-					</tr>						
-					<tr>
-						<td><div class="container" id="C2" onclick="interarirInventario(event, '2')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
-						<td width="72"></td>
-						<td width="72"></td>
-						<td width="72"></td>
-						<td><div class="container" id="C6" onclick="interarirInventario(event, '6')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
-					</tr>
-					<tr>
-						<td><div class="container" id="C3" onclick="interarirInventario(event, '3')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></div></td>
-						<td width="72"></td>
-						<td width="72"></td>
-						<td><div class="container" id="C4" onclick="interarirInventario(event, '4')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
-						<td><div class="container" id="C7" onclick="interarirInventario(event, '7')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
-					</tr>
-				</tbody>
-				<tbody>	
-					<tr class="subtitulo">
-						<td colspan="5" style="padding-left: 5px;">Mochila</td>
-					</tr>
-					<tr>
-						<td><div class="container" id="C101" onclick="interarirInventario(event, '101')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
-						<td><div class="container" id="C102" onclick="interarirInventario(event, '102')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
-						<td><div class="container" id="C103" onclick="interarirInventario(event, '103')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
-						<td><div class="container" id="C104" onclick="interarirInventario(event, '104')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
-						<td><div class="container" id="C105" onclick="interarirInventario(event, '105')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
-					</tr>
-					<tr>
-						<td><div class="container" id="C106" onclick="interarirInventario(event, '106')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
-						<td><div class="container" id="C107" onclick="interarirInventario(event, '107')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
-						<td><div class="container" id="C108" onclick="interarirInventario(event, '108')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
-						<td><div class="container" id="C109" onclick="interarirInventario(event, '109')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
-					</tr>
-				</tbody>	
-			</table>
+			<div class = tutorial>
+				<h3>How to use</h3>
+				<p>Shift+Click: Add 3 items from the stockpile.</p>
+				<p>Control+Click: Split items on the inventory.</p>
+				<p>Alt+Click: Drop items on the inventory.</p>
+			</div>
+			<div class="playerInventory">			
+				<table>
+					<tbody background="https://imgur.com/gcSCe8e.png">
+						<tr class="subtitulo">
+							<td colspan="3" style="padding-left: 5px;">Equipments</td>					
+							<td width="72" style="text-align: right;"><img class="icon" src="https://static.wikia.nocookie.net/foxhole_gamepedia_en/images/0/0f/White_backpack.png";/></td>
+							<td width="72" style="text-align: left;"><input type="text" id="Peso" size="10" style="background-color: black;color: white;width:60;"></td>
+						</tr>
+						<tr>
+							<td><div class="container" id="C1" onclick="interarirInventario(event, '1')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
+							<td><div class="container" id="C8" onclick="interarirInventario(event, '8')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/> </td>
+							<td width="72"></td>
+							<td width="72"></td>
+							<td><div class="container" id="C5" onclick="interarirInventario(event, '5')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
+						</tr>						
+						<tr>
+							<td><div class="container" id="C2" onclick="interarirInventario(event, '2')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
+							<td width="72"></td>
+							<td width="72"></td>
+							<td width="72"></td>
+							<td><div class="container" id="C6" onclick="interarirInventario(event, '6')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
+						</tr>
+						<tr>
+							<td><div class="container" id="C3" onclick="interarirInventario(event, '3')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></div></td>
+							<td width="72"></td>
+							<td width="72"></td>
+							<td><div class="container" id="C4" onclick="interarirInventario(event, '4')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
+							<td><div class="container" id="C7" onclick="interarirInventario(event, '7')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
+						</tr>
+					</tbody>
+					<tbody>	
+						<tr class="subtitulo">
+							<td colspan="5" style="padding-left: 5px;">Backpack</td>
+						</tr>
+						<tr>
+							<td><div class="container" id="C101" onclick="interarirInventario(event, '101')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
+							<td><div class="container" id="C102" onclick="interarirInventario(event, '102')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
+							<td><div class="container" id="C103" onclick="interarirInventario(event, '103')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
+							<td><div class="container" id="C104" onclick="interarirInventario(event, '104')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
+							<td><div class="container" id="C105" onclick="interarirInventario(event, '105')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
+						</tr>
+						<tr>
+							<td><div class="container" id="C106" onclick="interarirInventario(event, '106')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
+							<td><div class="container" id="C107" onclick="interarirInventario(event, '107')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
+							<td><div class="container" id="C108" onclick="interarirInventario(event, '108')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
+							<td><div class="container" id="C109" onclick="interarirInventario(event, '109')"><h2 class="numero"></h2><img class="imagem" src="https://imgur.com/TmwmszG.png"/></td>
+						</tr>
+					</tbody>	
+				</table>
+			</div>
 		</div>
-		<div class="mainbody">
+		<div class="stockpile">
 			<table border="0" id="stockpile">
 				<tr class="subtitulo">
 					<td colspan="10" style="padding-left: 5px;">Stockpile</td>
