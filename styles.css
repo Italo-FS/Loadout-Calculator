@@ -25,6 +25,7 @@ input[type="text"] {
 	background-color: #292929;
 	border: solid black 1px;
 	position: relative;
+	z-index: 0;
 }
 
 tr.subtitulo {
@@ -52,6 +53,7 @@ h2.numero {
 	right: 5px;
 	font-family: Lucida Console;
 	font-size: 100%;
+	z-index: 1;
 }
 
 .mainbody {
@@ -93,24 +95,25 @@ table {
 }
 
 .container .tooltiptext {
-  visibility: hidden;
-  min-width: 200px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  font-family: Helvetica;
-  border-radius: 6px;
-  padding: 5px 0;
-  height: max-content;
-  text-align: left;
+	visibility: hidden;
+	min-width: 200px;
+	background-color: black;
+	color: #fff;
+	text-align: center;
+	font-family: Helvetica;
+	border-radius: 6px;
+	padding: 5px 0;
+	height: max-content;
+	text-align: left;
+	z-index: 2;
 
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
+	/* Position the tooltip */
+	position: absolute;
+	z-index: 1;
 }
 
 .container .imagem:hover + .tooltiptext {
-  visibility: visible;
+	visibility: visible;
 }
 
 .container .tooltiptext p {
